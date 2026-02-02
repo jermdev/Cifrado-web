@@ -15,8 +15,8 @@ export const initialState: GlobalState = {
   { id: "Blowfish", label: "Blowfish" },
   { id: "ChaCha20", label: "ChaCha20" },
   ],
-  resultadoCifrado: null,
-  
+  resultadoEncriptado: null,
+  resultadoDesemcriptado: null,
   textoPlano: "",
   wordkey: "",
 };
@@ -55,7 +55,17 @@ export function globalReducer(
       return {
         ...state,
         wordkey: action.payload,
-      }
+      };
+    case "SET_RESULTADO_ENCRIPTADO":
+      return {
+        ...state,
+        resultadoEncriptado: action.payload,
+      };
+    case "SET_RESULTADO_DESENCRIPTADO":
+      return {
+        ...state,
+        resultadoDesemcriptado: action.payload,
+      };
     default:
       return state;
   }

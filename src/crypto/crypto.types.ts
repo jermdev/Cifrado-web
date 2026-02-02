@@ -12,3 +12,7 @@ export interface EncryptedPayload {
   meta?: Record<string, unknown>;
 }
 
+export interface DecryptedPayload {
+  algorithm: Algorithm;
+  plainText: string;
+}

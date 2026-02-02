@@ -1,5 +1,5 @@
 
-import type { EncryptedPayload, Algorithm } from "../crypto/crypto.types"
+import type { EncryptedPayload, Algorithm, DecryptedPayload } from "../crypto/crypto.types"
 
 
 export type AlgoritmoCifrado = {
@@ -19,7 +19,8 @@ export type GlobalState = {
   algortimosCifradoDisponibles: CIFRADO_OPTIONS;
   textoPlano:string;
   wordkey:string;
-  resultadoCifrado: EncryptedPayload | null;
+  resultadoEncriptado: EncryptedPayload | null;
+  resultadoDesemcriptado:DecryptedPayload | null;
 };
 
 export type GlobalAction =
@@ -28,6 +29,7 @@ export type GlobalAction =
   | { type: "SET_ALGORITMO_CIFRADO", payload: AlgoritmoCifrado }
   | { type: "SET_TEXTO_PLANO", payload: string }
   | { type: "SET_WORD_KEY", payload: string }
-
+  | { type: "SET_RESULTADO_ENCRIPTADO", payload: EncryptedPayload }
+  | { type: "SET_RESULTADO_DESENCRIPTADO", payload: DecryptedPayload }
   | { type: "TOGGLE_MODE_ENCRYPT" };
 
