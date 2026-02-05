@@ -11,7 +11,6 @@ export class AESCBC_Cifrado extends AlgoritmoCifrado {
 
 
     private async importKey(key: string): Promise<CryptoKey> {
-        const keyBytes = this.textToUint8(key).slice(0, 32); // 256 bits
 
         const hash = await crypto.subtle.digest(
             "SHA-256",
@@ -38,10 +37,16 @@ export class AESCBC_Cifrado extends AlgoritmoCifrado {
             this.encoder.encode(textoPlano)
         );
 
+        const encryptedBytes = new Uint8Array(encrypted);
+        const combined = new Uint8Array(iv.length + encryptedBytes.length);
+
+        combined.set(iv, 0);
+        combined.set(encryptedBytes, iv.length);
+
         return {
         algorithm: "AES-CBC",
-        cipher: this.uint8ToBase64(new Uint8Array(encrypted)),
-        iv: this.uint8ToBase64(iv)
+        cipher: this.uint8ToBase64(combined),
+        
         }
     };
 
@@ -53,14 +58,19 @@ export class AESCBC_Cifrado extends AlgoritmoCifrado {
         const cipherText = data.slice(16);
 
         const cryptoKey = await this.importKey(clave);
-
-        const decrypted = await crypto.subtle.decrypt(
+        try {
+            const decrypted = await crypto.subtle.decrypt(
             { name: "AES-CBC", iv },
             cryptoKey,
             cipherText
-        );
+            );
 
-        return new TextDecoder().decode(decrypted);
+            return new TextDecoder().decode(decrypted);
+        } catch (error) {
+            console.error(error);
+            return "Error al descifrar el texto. Ver consola para más detalles.";
+        }
+        
     }
 
     getNombre(): string {

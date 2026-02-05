@@ -1,4 +1,4 @@
-import type { Algorithm } from '../crypto/crypto.types';
+import type { Algorithm, EncryptedPayload } from '../crypto/crypto.types';
 import { AlgoritmoCifrado, AESGCM_Cifrado, AESCBC_Cifrado } from "../Model";
 
 
@@ -32,7 +32,7 @@ export class CifradoService {
                 
     }
 
-    async cifrar(textoPlano: string, clave: string): Promise<any> {
+    async cifrar(textoPlano: string, clave: string): Promise<EncryptedPayload> {
         this.seleccionarAlgoritmoCifrado();
         return this.AlgoritmoCifradoEntity.cifrar(textoPlano, clave);
     }

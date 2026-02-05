@@ -2,15 +2,15 @@ import MenuHamburguesaButton from "../Components/MenuHamburguesaButton";
 import ToogleEncryptButton from "../Components/ToogleEncryptButton";
 import MenuAlgoritmosEncirptado from "../Components/MenuAlgoritmosEncirptado";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 
 import { useGlobal } from '../Hooks/useGlobalHook';
 
 import { CifradoService } from '../Service';
 
 function PaginaPrincipal() {
-    const { state, dispatch } = useGlobal();
-    const [shouldProcess, setShouldProcess] = useState(false);
+    const { state } = useGlobal();
+    
 
     const service = new CifradoService(state.algoritmoCifradoSeleccionado.id);
 
@@ -19,58 +19,44 @@ function PaginaPrincipal() {
    
     const handleEncryptDecrypt = async () => {
 
-        
         const texto = textoArea.current?.value;
         const clave = claveCifrado.current?.value;
         
         if (!texto || !clave) return;
         
-        dispatch({ type: "SET_TEXTO_PLANO", payload: texto });
-        dispatch({ type: "SET_WORD_KEY", payload: clave });
         
-
         try {
             if (state.isModeEncrypt) {
-              const cifrado = await service.cifrar(texto, clave);
-              dispatch({ type: "SET_RESULTADO_ENCRIPTADO", payload: cifrado });
-              console.log("Texto cifrado:", cifrado);
+                const cifrado = await service.cifrar(texto, clave);
+                
+                updateTextArea(cifrado.cipher);
+
+                // console.log("Texto cifrado:", cifrado);
             } else {
                 
-                const descifrado = await service.descifrar((!state.resultadoEncriptado)? texto: state.resultadoEncriptado, clave);
-                const decryptedPayload = {
-                    algorithm: state.resultadoEncriptado!.algorithm,
-                    plainText: descifrado
-                };
-                dispatch({ type: "SET_RESULTADO_DESENCRIPTADO", payload: decryptedPayload });
-                console.log("Texto descifrado:", descifrado);
+                const decifrar = {
+                    algorithm: state.algoritmoCifradoSeleccionado.id,
+                    cipher: texto
+                }
+                // console.log("Texto text area:", texto);
+
+                const descifrado = await service.descifrar(decifrar, clave);
+
+                // console.log("Texto descifrado:", descifrado);
+                updateTextArea(descifrado);
+                
+                
             }
         } catch (err) {
+            updateTextArea("Error durante el proceso de cifrado/descifrado. /n" + (err instanceof Error ? `Detalles: ${err.message}` : ""));
             console.error(err);
         }
         
-        
-        
-        setShouldProcess(true);
-        
-        console.log("Proceso de cifrado/descifrado completado.");
 
     };
 
-    useEffect(() => {
+    const updateTextArea = ( nuevo_texto: string) => { textoArea.current!.value = nuevo_texto;}
 
-        if (!shouldProcess) return;
-
-        if (state.resultadoEncriptado && state.isModeEncrypt) {
-            textoArea.current!.value = state.resultadoEncriptado.cipher;
-        }
-
-        if (state.resultadoDesemcriptado && !state.isModeEncrypt) {
-            textoArea.current!.value = state.resultadoDesemcriptado.plainText;
-        }
-
-        setShouldProcess(false);
-    }, [shouldProcess]);
-    
    
     return (
     <>
