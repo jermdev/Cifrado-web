@@ -14,6 +14,7 @@ export const initialState: GlobalState = {
   { id: "3DES", label: "Triple DES" },
   { id: "Blowfish", label: "Blowfish" },
   { id: "ChaCha20", label: "ChaCha20" },
+  {id: "AES-CBC", label: "AES-CBC (Simétrico)"}
   ],
   resultadoEncriptado: null,
   resultadoDesemcriptado: null,

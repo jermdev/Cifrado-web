@@ -5,6 +5,7 @@ import type { EncryptedPayload, Algorithm, DecryptedPayload } from "../crypto/cr
 export type AlgoritmoCifrado = {
   id: Algorithm;
   label: string;
+  type?: "symmetric" | "asymmetric";
 };
 
 export type CIFRADO_OPTIONS = AlgoritmoCifrado[];

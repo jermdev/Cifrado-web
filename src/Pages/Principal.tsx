@@ -28,13 +28,15 @@ function PaginaPrincipal() {
         dispatch({ type: "SET_TEXTO_PLANO", payload: texto });
         dispatch({ type: "SET_WORD_KEY", payload: clave });
         
+
         try {
             if (state.isModeEncrypt) {
               const cifrado = await service.cifrar(texto, clave);
               dispatch({ type: "SET_RESULTADO_ENCRIPTADO", payload: cifrado });
               console.log("Texto cifrado:", cifrado);
             } else {
-                const descifrado = await service.descifrar(state.resultadoEncriptado, clave);
+                
+                const descifrado = await service.descifrar((!state.resultadoEncriptado)? texto: state.resultadoEncriptado, clave);
                 const decryptedPayload = {
                     algorithm: state.resultadoEncriptado!.algorithm,
                     plainText: descifrado

@@ -1,5 +1,5 @@
 import type { Algorithm } from '../crypto/crypto.types';
-import { AlgoritmoCifrado, AESGCM_Cifrado } from "../Model";
+import { AlgoritmoCifrado, AESGCM_Cifrado, AESCBC_Cifrado } from "../Model";
 
 
 export class CifradoService {
@@ -22,7 +22,10 @@ export class CifradoService {
             case "AES-GCM":
                 this.AlgoritmoCifradoEntity = new AESGCM_Cifrado();
                 break;
-            // Otros casos para diferentes algoritmos
+            case "AES-CBC":
+                // this.AlgoritmoCifradoEntity = new AESCBC_Cifrado();
+                this.AlgoritmoCifradoEntity = new AESCBC_Cifrado();
+                break;
             default:
                 throw new Error("Algoritmo no soportado");
             }
