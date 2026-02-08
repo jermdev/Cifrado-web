@@ -37,6 +37,8 @@ export class AESCBC_Cifrado extends AlgoritmoCifrado {
             this.encoder.encode(textoPlano)
         );
 
+        
+
         const encryptedBytes = new Uint8Array(encrypted);
         const combined = new Uint8Array(iv.length + encryptedBytes.length);
 

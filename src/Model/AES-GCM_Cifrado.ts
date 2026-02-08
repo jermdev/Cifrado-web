@@ -40,6 +40,7 @@ export class AESGCM_Cifrado extends AlgoritmoCifrado {
         // Lógica de cifrado AES-GCM
         const iv = crypto.getRandomValues(new Uint8Array(12));
         const salt = crypto.getRandomValues(new Uint8Array(16));
+
         const key = await this.deriveKey(clave, salt);
 
         const encrypted = await crypto.subtle.encrypt(
@@ -48,11 +49,19 @@ export class AESGCM_Cifrado extends AlgoritmoCifrado {
         this.encoder.encode(textoPlano)
         );
 
+        const encryptedBytes = new Uint8Array(encrypted);
+
+        const combined = new Uint8Array(
+            salt.length + iv.length + encryptedBytes.length
+        );
+
+        combined.set(salt, 0);
+        combined.set(iv, salt.length);
+        combined.set(encryptedBytes, salt.length + iv.length);
+
         return {
             algorithm: "AES-GCM",
-            cipher: this.uint8ToBase64(new Uint8Array(encrypted)),
-            iv: this.uint8ToBase64(iv),
-            salt: this.uint8ToBase64(salt),  
+            cipher: this.uint8ToBase64(combined),
         };
 
         
@@ -65,30 +74,29 @@ export class AESGCM_Cifrado extends AlgoritmoCifrado {
             throw new Error("Algoritmo incompatible");
         }
 
-        if (!textoCifrado.iv || !textoCifrado.salt) {
-            throw new Error("Datos incompletos para desencriptar");
-        }
+        const data = this.base64ToUint8(textoCifrado.cipher);
 
-        const iv = this.base64ToUint8(textoCifrado.iv);
-        const salt = this.base64ToUint8(textoCifrado.salt);
-        const cipherData = this.base64ToUint8(textoCifrado.cipher);
+        const SALT_LENGTH = 16;
+        const IV_LENGTH = 12;
+
+        
+        const salt = data.slice(0, SALT_LENGTH);
+        const iv = data.slice(SALT_LENGTH, SALT_LENGTH + IV_LENGTH);
+        const cipherText = data.slice(SALT_LENGTH + IV_LENGTH);
 
         const key = await this.deriveKey(clave, salt);
 
         try {
             const decryptedBuffer = await crypto.subtle.decrypt(
-                { name: "AES-GCM", iv: new Uint8Array(iv).buffer },
+                { name: "AES-GCM", iv },
                 key,
-                new Uint8Array(cipherData).buffer
+                cipherText
             );
 
             return new TextDecoder().decode(decryptedBuffer);
 
         } catch (error) {
-        // ⚠️ AES-GCM lanza error si:
-        // - contraseña incorrecta
-        // - iv incorrecto
-        // - cipher modificado
+        
         throw new Error("No se pudo desencriptar: contraseña o datos inválidos");
         }
 
