@@ -10,7 +10,7 @@ export abstract class AlgoritmoCifrado {
     abstract descifrar(textoCifrado: EncryptedPayload, clave: string): Promise<string>;
 
     /*Metodo para obtener el nombre del algoritmo*/
-    abstract getNombre(): string;
+    abstract getAlgoritmo(): string;
 
 
     // metodos utilitarios

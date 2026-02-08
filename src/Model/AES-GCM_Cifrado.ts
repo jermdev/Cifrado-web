@@ -102,7 +102,7 @@ export class AESGCM_Cifrado extends AlgoritmoCifrado {
 
     }
 
-    getNombre(): string {
+    getAlgoritmo(): string {
         return "AES-GCM";
     }
 

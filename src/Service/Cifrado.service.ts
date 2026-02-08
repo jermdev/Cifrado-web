@@ -1,5 +1,5 @@
 import type { Algorithm, EncryptedPayload } from '../crypto/crypto.types';
-import { AlgoritmoCifrado, AESGCM_Cifrado, AESCBC_Cifrado } from "../Model";
+import { AlgoritmoCifrado, AESGCM_Cifrado, AESCBC_Cifrado, Blowfish_Cifrar, DES_Cifrar, TripleDES_Cifrar } from "../Model";
 
 
 export class CifradoService {
@@ -26,6 +26,16 @@ export class CifradoService {
                 // this.AlgoritmoCifradoEntity = new AESCBC_Cifrado();
                 this.AlgoritmoCifradoEntity = new AESCBC_Cifrado();
                 break;
+            case "3DES":
+                this.AlgoritmoCifradoEntity = new TripleDES_Cifrar();
+                break;
+            case "Blowfish":
+                this.AlgoritmoCifradoEntity = new Blowfish_Cifrar();
+                break;
+            case "DES":
+                this.AlgoritmoCifradoEntity = new DES_Cifrar();
+                break;
+            
             default:
                 throw new Error("Algoritmo no soportado");
             }

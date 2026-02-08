@@ -75,7 +75,7 @@ export class AESCBC_Cifrado extends AlgoritmoCifrado {
         
     }
 
-    getNombre(): string {
+    getAlgoritmo(): string {
         return "AES-CBC";
     }
 
