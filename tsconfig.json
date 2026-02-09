@@ -7,8 +7,5 @@
   
   "compilerOptions": {
     "baseUrl": "src",
-    "paths": {
-      "@/*": ["*"]
-    }
   }
 }

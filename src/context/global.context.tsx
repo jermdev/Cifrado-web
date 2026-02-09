@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 import { globalReducer, initialState } from "./global.reducer";
 import type { GlobalState, GlobalAction } from "./global.types";
 

@@ -1,5 +1,5 @@
 
-import type { EncryptedPayload, Algorithm, DecryptedPayload } from "../crypto/crypto.types"
+import type {  Algorithm } from "../crypto/crypto.types"
 
 
 export type AlgoritmoCifrado = {
