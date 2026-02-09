@@ -14,7 +14,6 @@ export const initialState: GlobalState = {
   { id: "DES", label: "DES" },
   { id: "3DES", label: "Triple DES" },
   { id: "Blowfish", label: "Blowfish" },
-  { id: "ChaCha20", label: "ChaCha20" },
   ],
 
 
