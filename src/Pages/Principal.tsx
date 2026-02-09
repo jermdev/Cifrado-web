@@ -62,7 +62,10 @@ function PaginaPrincipal() {
     <>
         <section className="principal-section">
             <form action="" className="">
-                <textarea ref={textoArea} id="inputTextoPlano" className="textArea-input_output" autoFocus />
+                <div className="container">
+
+                    <textarea ref={textoArea} id="inputTextoPlano" className="textArea-input_output" autoFocus />
+                </div>
             <div className="inputs-keys">
                 
                 <label htmlFor="" className="Clave-cifrado-input">
