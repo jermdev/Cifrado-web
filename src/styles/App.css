@@ -53,12 +53,7 @@
 
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
+
 
 .button-encrypt-decrypt-container {
   width: 40%;
@@ -220,15 +215,19 @@
   .textArea-input_output {
     max-width: 100%;
     margin: 0 auto;
+  }
 
+  .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   }
 
   .inputs-keys .button-encrypt-decrypt-container {
     width: 80%;
-    margin:  1rem auto;
-  
+    margin:  1rem auto; 
     align-items: start;
-  
   }
 
   .inputs-keys .input-clave {
