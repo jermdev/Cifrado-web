@@ -7,10 +7,8 @@ export const initialState: GlobalState = {
   algoritmoCifradoSeleccionado: { id: "AES-CBC", label: "AES-CBC (Simétrico)" },
   
   algortimosCifradoDisponibles: [
-  { id: "AES", label: "AES (Simétrico)" },
   { id: "AES-GCM", label: "AES-GCM (Simétrico)"},
   {id: "AES-CBC", label: "AES-CBC (Simétrico)"},
-  { id: "RSA", label: "RSA (Asimétrico)" },
   { id: "DES", label: "DES" },
   { id: "3DES", label: "Triple DES" },
   { id: "Blowfish", label: "Blowfish" },

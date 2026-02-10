@@ -45,7 +45,7 @@ export default function EncryptionOptionsPanel() {
       <aside className="encryption-panel">
           {/* Header */}
         <div className="panel-header">
-          <h2 >Tipos de Encriptado</h2>
+          <h2>Algoritmos de Cifrado</h2>
           <button
             onClick={setCloseMenu}
           >

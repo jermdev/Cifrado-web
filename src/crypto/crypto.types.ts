@@ -1,6 +1,6 @@
 
 
-export type Algorithm = "AES" | "AES-GCM" | "AES-CBC" | "RSA" | "DES" | "3DES" | "Blowfish" ;
+export type Algorithm =  "AES-GCM" | "AES-CBC" | "DES" | "3DES" | "Blowfish" ;
 
 export interface EncryptedPayload {
   algorithm: Algorithm;
