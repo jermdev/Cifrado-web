@@ -83,6 +83,11 @@ correcto cifrado, se cuenta con tres botones.
 - Aplicar buenas prácticas de cifrado en aplicaciones web
 - Comprender la creacion y mantenimiento de un proyecto
 
+## Previews 
+
+Pagina de vista previa en netlify
+[Cifrado Web](https://cifrado-web.netlify.app/)
+
 ## Autor
 
 Jeremi Porras  
