@@ -42,39 +42,39 @@ correcto cifrado, se cuenta con tres botones.
 - Cifrar | Decifrar : este boton desifra o desifra el mensaje.
 
 ## Estructura del proyecto
-
-src/
-├── components/
-|   └── MenuAlgortimosEncriptado.tsx
-│   └── MenuHamburguesaButton.tsx
-│   └── ToogleEncryptButton.tsx
-├── context/
-|   └── global.context.tsx
-|   └── global.reducer.ts
-|   └── global.types.ts
-├── crypto/
-|   └── crypto.types.ts
-├── Hooks/
-|   └── useGlobalHooks.ts
-├── Model/
-|   └── 3DES_Cifrado.ts
-|   └── AES-CBC.ts
-|   └── AES-GCM_Cifrado.ts
-|   └── AlgoritmoCifrado.ts
-|   └── Blowfish_Cifrado.ts
-|   └── DES_Cifrado.ts
-|   └── index.ts
-├── Pages/
-|   └── Principal.tsx
-├── services/
-│   └── Cifrado.service.ts
-│   └── index.ts
-├── styles/
-│   └── App.css
-│   └── index.css
-├── App.tsx
-├── main.tsx
-├── vite-env.d.ts
+   ```bash
+   src/
+   ├── components/
+   |   └── MenuAlgortimosEncriptado.tsx
+   │   └── MenuHamburguesaButton.tsx
+   │   └── ToogleEncryptButton.tsx
+   ├── context/
+   |   └── global.context.tsx
+   |   └── global.reducer.ts
+   |   └── global.types.ts
+   ├── crypto/
+   |   └── crypto.types.ts
+   ├── Hooks/
+   |   └── useGlobalHooks.ts
+   ├── Model/
+   |   └── 3DES_Cifrado.ts
+   |   └── AES-CBC.ts
+   |   └── AES-GCM_Cifrado.ts
+   |   └── AlgoritmoCifrado.ts
+   |   └── Blowfish_Cifrado.ts
+   |   └── DES_Cifrado.ts
+   |   └── index.ts
+   ├── Pages/
+   |   └── Principal.tsx
+   ├── services/
+   │   └── Cifrado.service.ts
+   │   └── index.ts
+   ├── styles/
+   │   └── App.css
+   │   └── index.css
+   ├── App.tsx
+   ├── main.tsx
+   ├── vite-env.d.ts
 
 ## Objetivos
 
