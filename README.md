@@ -1,69 +1,88 @@
-# React + TypeScript + Vite
+# Proyecto Cifrado-Web
+Aplicacion web para el Cifrado de texto plano usando algortimos modernos de Cifrado.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Esta herramienta web busca servir como vehiculo para llevar mensajes ocultos y pormedio de la misma decifrar mensajes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto fue desarrollado en React y typescript.
+Utiliza Web Crypto API, y la libreria CryptoJS.
 
-## Expanding the ESLint configuration
+## Estado del proyecto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🚧 En desarrollo (versión temprana funcional)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [x] Cifrado de texto
+- [x] Descifrado de texto
+- [X] Interfaz responsive
+- [ ] Manejo de errores avanzado
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Tecnologías utilizadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- React
+- TypeScript
+- Vite
+- Web Crypto API
+- CSS
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Instalación y ejecución
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/jermdev/Cifrado-web
+   npm install
+   npm run dev
+   
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 6. Uso básico
+Es aplicacion cuenta con dos entradas de texto principales text Area ,y un input para colocar la clave, ambos campos son inprensidibles para el
+correcto cifrado, se cuenta con tres botones.
+- ☰ : este abre la barra lateral donde el usuario escogera los diferentes algoritmos disponibles
+- 🔒 | 🔓 : Este cambia entremodos de encriptar y desemcriptar.
+- Cifrar | Decifrar : este boton desifra o desifra el mensaje.
+
+## Estructura del proyecto
+
+src/
+├── components/
+|   └── MenuAlgortimosEncriptado.tsx
+│   └── MenuHamburguesaButton.tsx
+│   └── ToogleEncryptButton.tsx
+├── context/
+|   └── global.context.tsx
+|   └── global.reducer.ts
+|   └── global.types.ts
+├── crypto/
+|   └── crypto.types.ts
+├── Hooks/
+|   └── useGlobalHooks.ts
+├── Model/
+|   └── 3DES_Cifrado.ts
+|   └── AES-CBC.ts
+|   └── AES-GCM_Cifrado.ts
+|   └── AlgoritmoCifrado.ts
+|   └── Blowfish_Cifrado.ts
+|   └── DES_Cifrado.ts
+|   └── index.ts
+├── Pages/
+|   └── Principal.tsx
+├── services/
+│   └── Cifrado.service.ts
+│   └── index.ts
+├── styles/
+│   └── App.css
+│   └── index.css
+├── App.tsx
+├── main.tsx
+├── vite-env.d.ts
+
+## Objetivos
+
+- Comprender el uso correcto de IV y salt en criptografía
+- Aplicar buenas prácticas de cifrado en aplicaciones web
+- Comprender la creacion y mantenimiento de un proyecto
+
+## Autor
+
+Jeremi Porras  
+GitHub: https://github.com/jermdev
