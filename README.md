@@ -76,6 +76,7 @@ correcto cifrado, se cuenta con tres botones.
    ├── main.tsx
    ├── vite-env.d.ts
 
+```
 ## Objetivos
 
 - Comprender el uso correcto de IV y salt en criptografía
